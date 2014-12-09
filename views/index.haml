@@ -1,7 +1,13 @@
 !!!
 %html
   %head
+    %script{:type => "text/javascript", :src => "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "app.js"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "styles.css"}
     %title Super-Pry
   %body
     %h1 Welcome to
     %p super-pry!
+
+  %form{:action => "/", :method => "post"}
+    %input{:type => "text", :name => "code"}
