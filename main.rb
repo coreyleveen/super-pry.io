@@ -1,5 +1,6 @@
-require 'sinatra'
+require 'bundler'
+Bundler.require
 
 get '/' do
-  "Hello world!"
+  haml :index
 end
