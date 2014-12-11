@@ -1,3 +1,13 @@
-body {
-  background-color: oldlace;
+.title-wrapper {
+  text-align: center;
+}
+
+.form-wrapper {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.input {
+  width: 100%;
 }

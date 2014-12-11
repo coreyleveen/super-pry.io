@@ -6,8 +6,11 @@
     %link{:rel => "stylesheet", :type => "text/css", :href => "styles.css"}
     %title Super-Pry
   %body
-    %h1 Welcome to
-    %p super-pry!
+  .main-wrapper
+    .title-wrapper
+      %h1 Superpry
+    .form-wrapper
+      %form{:action => "/", :method => "get"}
+        %input{:type => "text", :name => "code", :class => "input"}
+    %p #{params[:code]}
 
-  %form{:action => "/", :method => "post"}
-    %input{:type => "text", :name => "code"}
