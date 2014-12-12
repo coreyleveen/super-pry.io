@@ -6,5 +6,5 @@ get '/' do
 end
 
 post '/' do
-
+  haml :index
 end
