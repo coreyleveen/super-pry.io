@@ -1,14 +1,13 @@
+require 'json'
 require 'bundler'
 Bundler.require
-require 'json'
-require 'pry'
 
 get '/' do
   haml :index
 end
 
-post '/' do
+post '/.json' do
   content_type :json
-  binding.pry
-  haml :index
+  output = params[:code] + "- sinatra"
+  output.to_json
 end

@@ -1,14 +1,21 @@
 $(function() {
-  console.log("App.js is here");
-
   $("#target").submit(function(event) {
     event.preventDefault();
-    alert("Handler for .submit() called");
-    var text = $(".input").val();
+    sendText();
     $(".input").val("");
-    console.log(text);
+    return false;
   });
-
 });
 
-
+function sendText() {
+  var text = $(".input").val();
+  $.ajax({
+    url: "/.json",
+    method: 'post',
+    data: {code: text},
+    success: function(data) {
+      var par = $("<p></p>").html(data)
+      $(".form-wrapper").append(par)
+    }
+  });
+}
