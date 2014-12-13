@@ -2,8 +2,11 @@ $(function() {
   console.log("App.js is here");
 
   $("#target").submit(function(event) {
-    alert("Handler for .submit() called");
     event.preventDefault();
+    alert("Handler for .submit() called");
+    var text = $(".input").val();
+    $(".input").val("");
+    console.log(text);
   });
 
 });
