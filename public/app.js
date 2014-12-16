@@ -14,7 +14,7 @@ function sendText() {
     method: 'post',
     data: {code: text},
     success: function(data) {
-      var par = $("<p></p>").html(data)
+      var par = $("<p></p>").text(data)
       $(".form-wrapper").append(par)
     }
   });
