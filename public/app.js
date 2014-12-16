@@ -10,7 +10,7 @@ $(function() {
 function sendText() {
   var text = $(".input").val();
   $.ajax({
-    url: "/.json",
+    url: "/",
     method: 'post',
     data: {code: text},
     success: function(data) {
