@@ -1,4 +1,3 @@
-require 'stringio'
 require 'bundler'
 Bundler.require
 
@@ -8,37 +7,23 @@ get '/' do
 end
 
 post '/' do
+  content_type :json
   code = params[:code]
 
-  $stdout = StringIO.new
+  def capture_stdout
+    begin
+      old_stdout = $stdout
+      $stdout = StringIO.new('','w')
+      yield
+      $stdout.string
+    ensure
+      $stdout.close
+      $stdout = old_stdout
+    end
+  end
 
-  @@p.eval(code)
-  output = $stdout.string
+  output = capture_stdout { @@p.eval(code) }
 
-  $stdout = STDOUT
-
-  output_arr = []
-  output.each_line('\n') { |line| output_arr << line }
-
-  output_arr[1]
-
-  binding.pry
-  # binding.pry
-  # # Exception
-  # if @@p.instance_variable_get("@last_result_is_exception")
-  #   binding.pry
-  #   @@p.instance_variable_get("@last_exception").inspect
-  # # Ongoing input
-  # elsif !@@p.instance_variable_get("@eval_string").empty?
-  #   binding.pry
-  #   "* " << code
-  # # End of input
-  # else
-  #   binding.pry
-  #   if @@p.output_array[-1].class == Symbol
-  #     ":" + @@p.output_array[-1].to_s
-  #   else
-  #     @@p.output_array[-1].to_s
-  #   end
-  # end
+  puts output
 end
+
