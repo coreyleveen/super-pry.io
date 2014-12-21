@@ -4,31 +4,26 @@ Bundler.require
 require_relative 'config.rb'
 
 get '/' do
-  @@p = Pry.new
+  $p = Pry.new
   haml :index
 end
 
 post '/' do
+  code = params[:code]
 
-  stdout_stream = capture(:stdout)
-  stream
-  binding.pry
-  # content_type :json
-  # code = params[:code]
+  $q = $p
+  stderr_stream = capture(:stderr) { $p.eval(code) }
+  stdout_stream = capture(:stdout) { $q.eval(code) }
 
-  # def capture_stdout
-  #   begin
-  #     old_stdout = $stdout
-  #     $stdout = StringIO.new('','w')
-  #     yield
-  #     $stdout.string
-  #   ensure
-  #     $stdout = old_stdout
-  #   end
-  # end
+  if !stderr_stream.empty?
+    return stderr_stream
+  elsif !stdout_stream.empty?
+    return stdout_stream
+  elsif !$p.instance_variable_get("@eval_string").empty?
+    return "* " + code
+  else
+    return code
+  end
 
-  # output = capture_stdout { @@p.eval(code) }
-
-  # puts output
 end
 
