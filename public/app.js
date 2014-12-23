@@ -9,13 +9,15 @@ $(function() {
 
 function sendText() {
   var text = $(".input").val();
+  var input = $("<p></p>").text(text)
+  $(".form-wrapper").append(input)
   $.ajax({
     url: "/",
     method: 'post',
     data: {code: text},
     success: function(data) {
-      var par = $("<p></p>").text(data)
-      $(".form-wrapper").append(par)
+      var response = $("<p></p>").text(data)
+      $(".form-wrapper").append(response)
     }
   });
 }
