@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/mntj/pry.git
+  revision: 7ec1cfca0241f5229c65e2665af8cb3fe62973d6
+  specs:
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -16,10 +25,6 @@ GEM
     method_source (0.8.2)
     minitest (5.4.3)
     multi_json (1.10.1)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -51,6 +56,6 @@ DEPENDENCIES
   activesupport
   haml
   json
-  pry
+  pry!
   sinatra
   sinatra-reloader
