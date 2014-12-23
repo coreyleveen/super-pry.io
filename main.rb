@@ -9,21 +9,16 @@ get '/' do
 end
 
 post '/' do
+
   code = params[:code]
 
-  $q = $p
-  stderr_stream = capture(:stderr) { $p.eval(code) }
-  stdout_stream = capture(:stdout) { $q.eval(code) }
+  $p.eval(code)
 
-  if !stderr_stream.empty?
-    return stderr_stream
-  elsif !stdout_stream.empty?
-    return stdout_stream
-  elsif !$p.instance_variable_get("@eval_string").empty?
-    return "* " + code
-  else
-    return code
-  end
+  outcome = $p.instance_variable_get(:@outcome)
+
+  binding.pry
+
+  return outcome
 
 end
 
