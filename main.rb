@@ -10,14 +10,16 @@ get '/' do
 end
 
 post '/' do
-
   code = params[:code]
-  $p.eval(code)
 
-  if $p.instance_variable_get(:@eval_string).empty?
+  stdout_stream = capture(:stdout) { $p.eval(code) }
+
+  if !stdout_stream.empty?
+    @output = stdout_stream.inspect
+  elsif $p.instance_variable_get(:@eval_string).empty?
     @output = $p.instance_variable_get(:@outcome).inspect
   end
-  return @output.to_s
 
+  return @output.to_s
 end
 
