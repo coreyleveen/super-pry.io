@@ -5,7 +5,6 @@ require_relative 'config.rb'
 
 get '/' do
   $p = Pry.new
-  @output = ""
   haml :index
 end
 
@@ -15,11 +14,9 @@ post '/' do
   stdout_stream = capture(:stdout) { $p.eval(code) }
 
   if !stdout_stream.empty?
-    @output = stdout_stream.inspect
-  elsif $p.instance_variable_get(:@eval_string).empty?
-    @output = $p.instance_variable_get(:@outcome).inspect
+    stdout_stream.inspect
+  elsif !$p.instance_variable_get(:@eval_string).empty?
+    code
   end
-
-  return @output.to_s
 end
 
