@@ -1,11 +1,14 @@
 .title-wrapper {
   text-align: center;
+  overflow: scroll;
 }
 
 .form-wrapper {
-  width: 50%;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
+  position: absolute;
+  bottom: 1em;
 }
 
 .input {

@@ -15,15 +15,22 @@ $(function() {
 
 function sendText() {
   var text = $(".input").val();
-  //var input = $("<p></p>").text(text)
-  //$(".form-wrapper").append(input)
+
   $.ajax({
     url: "/",
     method: 'post',
     data: {code: text},
     success: function(data) {
-      var response = $("<p></p>").text(data)
-      $(".form-wrapper").append(response)
+      // Handle multi-line input
+      if (data == "*") {
+        var output = $("<p></p>").text("* " + text).addClass("output");
+        $(".title-wrapper").append(output);
+      } else {
+        var output = $("<p></p>").text(text).addClass("output");
+        var response = $("<p></p>").text(data)
+        $(".title-wrapper").append(output);
+        $(".title-wrapper").append(response)
+      }
     }
   });
 }
