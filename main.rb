@@ -11,18 +11,26 @@ end
 post '/' do
   code = params[:code]
 
-  $q = $p
-  stderr_stream = capture(:stderr) { $p.eval(code) }
-  stdout_stream = capture(:stdout) { $q.eval(code) }
+  old_output_size = $p.output_array.size
 
-  if !stderr_stream.empty?
-    return stderr_stream
-  elsif !stdout_stream.empty?
+  stdout_stream = capture(:stdout) { $p.eval(code) }
+
+  new_output_size = $p.output_array.size
+
+  if !$p.eval_string.empty?
+    puts "ONE"
+    return "* #{code}"
+  elsif new_output_size != old_output_size
+    puts "TWO"
+    return $p.output_array[-1].inspect
+  elsif stdout_stream
+    puts "THREE"
     return stdout_stream
-  elsif !$p.instance_variable_get("@eval_string").empty?
-    return "* " + code
   else
-    return code
+    puts "FOUR"
+    return "Nothin!"
   end
+
+
 end
 
