@@ -23,13 +23,13 @@ function sendText() {
     success: function(data) {
       // Handle multi-line input
       if (data == "*") {
-        var output = $("<p></p>").text("* " + text).addClass("output");
-        $(".title-wrapper").append(output);
+        var output = $("<p></p>").text(">> * " + text).addClass("output");
+        $(".main").append(output);
       } else {
-        var output = $("<p></p>").text(text).addClass("output");
+        var output = $("<p></p>").text(">> " + text).addClass("output");
         var response = $("<p></p>").text(data)
-        $(".title-wrapper").append(output);
-        $(".title-wrapper").append(response)
+        $(".main").append(output);
+        $(".main").append(response)
       }
     }
   });

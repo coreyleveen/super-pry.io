@@ -1,6 +1,15 @@
+* {
+  font-family: Menlo, sans-serif;
+}
+
 .title-wrapper {
-  text-align: center;
+  text-align: left;
+}
+
+.main {
+  font-size: 16pt;
   overflow: scroll;
+  height: 50%;
 }
 
 .form-wrapper {
