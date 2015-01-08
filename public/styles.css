@@ -4,10 +4,10 @@
 
 .main {
   font-size: 14pt;
-  position: absolute;
-  bottom: 3em;
+  position: relative;
   width: 70%;
-  height: auto;
+  bottom: -120px;
+  margin-bottom: 25px;
 }
 
 .title-wrapper {
@@ -24,9 +24,7 @@ h1 {
 
 .form-wrapper {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  position: absolute;
+  position: fixed;
   bottom: 1em;
 }
 
