@@ -2,11 +2,6 @@
   font-family: Menlo, sans-serif;
 }
 
-body {
-  overflow: scroll;
-  height: auto;
-}
-
 .main {
   font-size: 14pt;
   position: absolute;
