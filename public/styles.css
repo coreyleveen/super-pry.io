@@ -2,14 +2,29 @@
   font-family: Menlo, sans-serif;
 }
 
-.title-wrapper {
-  text-align: left;
+body {
+  overflow: scroll;
+  height: auto;
 }
 
 .main {
   font-size: 16pt;
-  overflow: scroll;
-  height: 500px;
+  position: absolute;
+  bottom: 3em;
+  width: 70%;
+  height: auto;
+}
+
+.title-wrapper {
+  float: right;
+  display: inline-block;
+  height: 100%;
+  width: 20%;
+}
+
+h1 {
+  display: inherit;
+  float: right;
 }
 
 .form-wrapper {
