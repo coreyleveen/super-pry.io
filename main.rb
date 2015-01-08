@@ -23,8 +23,6 @@ post '/' do
     return $p.output_array[-1].inspect
   elsif stdout_stream
     return stdout_stream
-  else
-    return "Nothin!"
   end
 end
 
