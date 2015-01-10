@@ -15,18 +15,14 @@ h1 {
   position: fixed;
 }
 
-.main {
-  position: relative;
-  top: 35em;
-  width: 70%;
-  font-size: 14pt;
-  border: 1px solid green;
+.expander {
 }
 
-.push {
-  position: relative;
-  top: 43em !important;
-  border: 1px solid blue;
+.main {
+  position: absolute;
+  bottom: 3em;
+  width: 70%;
+  font-size: 14pt;
 }
 
 .form-wrapper {

@@ -3,6 +3,7 @@ $(function() {
     event.preventDefault();
     sendText();
     $(".input").val("");
+    expandPage();
     return false;
   });
 
@@ -33,4 +34,15 @@ function sendText() {
       }
     }
   });
+}
+
+function expandPage() {
+  var mainHeight = $(".main").height();
+  var pageHeight = $(document).height();
+  alert("mainheight: " + mainHeight);
+  alert("pageheight: " + pageHeight);
+  if (mainHeight > pageHeight) {
+    debugger;
+    $('.expander').css('height', mainHeight+'px');
+  }
 }
