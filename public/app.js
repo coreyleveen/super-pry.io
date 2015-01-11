@@ -1,11 +1,15 @@
 $(function() {
+  var docHeight = $(document).height();
+
   $('#target').submit(function(event) {
     event.preventDefault();
-    sendText();
+    sendText(docHeight);
     $('.input').val("");
     return false;
   });
 
+  // Clear screen with Ctrl + L
+  // Should be fixed to just add space below equal to viewport height
   $(document).keydown(function(e){
     if (e.keyCode == 76 && e.ctrlKey) {
       $("p").remove();
@@ -13,31 +17,37 @@ $(function() {
   });
 });
 
-function sendText() {
+function sendText(h) {
   var text = $('.input').val();
+
   $.ajax({
     url: "/",
     method: 'post',
     data: {code: text},
     success: function(data) {
       handleInput(data, text);
-      expandPage();
+      expandPage(h);
     }
   });
 }
 
-function expandPage() {
+function expandPage(originalDocHeight) {
   var mainHeight = $('.main').height();
-  var pageHeight = $(document).height();
-  console.log("expand fired");
-  if (mainHeight > pageHeight) {
-    console.log('inside main');
-    $('.expander').css('height', mainHeight+'px');
-    $('.main').offset({top: -18, left: 8});
-  }
+
+   if (mainHeight > originalDocHeight) {
+    var newStyles = {
+      "position": "relative",
+      "padding-top": "1em"
+    };
+
+    $('.main').css(newStyles);
+   }
+  // Scroll down
+  $('html, body').animate({scrollTop: $(document).height()}, 'fast');
 }
 
 function handleInput(data, text) {
+  // Handle multiple lines
   if (data == "*") {
     var output = $("<p></p>").text(">> * " + text).addClass("output");
     $('.main').append(output);
@@ -47,4 +57,5 @@ function handleInput(data, text) {
     $('.main').append(output);
     $('.main').append(response);
   }
+
 }
