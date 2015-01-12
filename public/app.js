@@ -3,6 +3,7 @@ $(function() {
   $('#target').submit(function(event) {
     event.preventDefault();
     sendText(docHeight);
+    checkForExit();
     $('.input').val("");
     return false;
   });
@@ -35,7 +36,6 @@ function expandPage(originalDocHeight) {
       "position": "relative",
       "padding-top": "1em"
     };
-
     $('.main').css(newStyles);
    }
   // Scroll down
@@ -53,4 +53,17 @@ function handleInput(data, text) {
     $('.main').append(output);
     $('.main').append(response);
   }
+}
+
+function checkForExit() {
+  var input = $('.input').val();
+  if (input == 'exit') {
+    var message = $("<p></p>").text("Exiting...");
+    $('.main').append(message);
+    setTimeout(reload, 2500);
+  }
+}
+
+function reload() {
+  window.location.reload();
 }
