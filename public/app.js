@@ -39,7 +39,7 @@ function expandPage(originalDocHeight) {
     $('.main').css(newStyles);
    }
   // Scroll down
-  $('html, body').animate({scrollTop: $(document).height()}, 'fast');
+  $('html, body').animate({scrollTop: $(document).height()}, 10);
 }
 
 function handleInput(data, text) {
