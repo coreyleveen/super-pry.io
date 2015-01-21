@@ -26,10 +26,11 @@ post '/' do
   new_output_size = $p.output_array.size
 
   if !$p.eval_string.empty?
-    return "*"
+    "*"
   elsif new_output_size != old_output_size
-    return $p.output_array[-1].inspect
+    $p.output_array[-1].inspect
   elsif stdout_stream
-    return stdout_stream
+    stdout_stream
   end
+
 end
