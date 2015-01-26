@@ -4,4 +4,5 @@ You don't want to run this code in an environment you care about, as it's an ope
 
 Suggestions? Send me a note or open a pull request.
 
-This is a Git config test
+This is a Git config test, another
+
