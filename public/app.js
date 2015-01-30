@@ -12,7 +12,7 @@ $(function() {
   // Clear screen with Ctrl + L
   // Should be fixed to just add space below equal to viewport height
 	  $(document).keydown(function(e){
-	    if (e.keyCode == 76 && e.ctrlKey) {
+	    if (e.keyCode === 76 && e.ctrlKey) {
 	      $("p").remove();
 	    }
 	  });
@@ -46,7 +46,7 @@ function expandPage(originalDocHeight) {
 
 function handleInput(data, text) {
   // Handle multiple lines
-	  if (data == "*") {
+	  if (data === "*") {
 		    var output = $("<p></p>").text(">> * " + text).addClass("output");
 		    $('.main').append(output);
 	  } else {
@@ -59,7 +59,7 @@ function handleInput(data, text) {
 
 function checkForExit() {
 	  var input = $('.input').val();
-	  if (input == 'exit') {
+	  if (input === 'exit') {
 		    var message = $("<p></p>").text("Exiting...");
 		    $('.main').append(message);
 		    setTimeout(reload, 2500);
