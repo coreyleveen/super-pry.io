@@ -5,7 +5,7 @@ require_relative 'config.rb'
 
 module Kernel
   def `(*)
-    "NOT allowed sonny! ;)"
+    raise PermissionsError, "NOT allowed sonny! ;) "
   end
 end
 
@@ -17,9 +17,7 @@ get '/' do
 end
 
 post '/' do
-  code = params[:code]
-
-  process_command(code)
+  process_command(params[:code])
 end
 
 def process_command(code)
