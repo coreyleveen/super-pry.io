@@ -19,6 +19,10 @@ end
 post '/' do
   code = params[:code]
 
+  process_command(code)
+end
+
+def process_command(code)
   old_output_size = $p.output_array.size
 
   stdout_stream = capture(:stdout) { $p.eval(code) }
@@ -32,5 +36,4 @@ post '/' do
   elsif stdout_stream
     stdout_stream
   end
-
 end
