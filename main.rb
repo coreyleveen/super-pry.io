@@ -3,14 +3,6 @@ Bundler.require
 
 require_relative 'config.rb'
 
-module Kernel
-  def `(*)
-    raise PermissionsError, "NOT allowed sonny! ;) "
-  end
-end
-
-Kernel.freeze
-
 get '/' do
   $p = Pry.new
   haml :index
