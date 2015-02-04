@@ -9,16 +9,17 @@ get '/' do
 end
 
 post '/' do
-  process_command(params[:code])
+  process_command(code: params[:code])
 end
 
-def process_command(code)
+def process_command(code:)
   old_output_size = $p.output_array.size
-
   stdout_stream = capture(:stdout) { $p.eval(code) }
-
   new_output_size = $p.output_array.size
+  handle_eval_string(old_output_size: old_output_size, new_output_size: new_output_size)
+end
 
+def handle_eval_string(old_output_size:, new_output_size:)
   if !$p.eval_string.empty?
     "*"
   elsif new_output_size != old_output_size
