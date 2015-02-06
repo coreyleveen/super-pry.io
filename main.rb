@@ -3,6 +3,8 @@ Bundler.require
 
 require_relative 'config.rb'
 
+enable :sessions
+
 get '/' do
   $p = Pry.new
   haml :index
