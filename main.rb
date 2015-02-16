@@ -6,9 +6,7 @@ require_relative 'config.rb'
 enable :sessions
 
 get '/' do
-  # $p = Pry.new
   $p = Pry.new
-  binding.pry
   haml :index
 end
 
