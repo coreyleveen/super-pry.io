@@ -16,10 +16,6 @@ module Kernel
   def exec(*)
     raise PermissionsError, "Access Denied."
   end
-
-  def %x(*)
-    raise PermissionsError, "Access Denied."
-  end
 end
 
 Kernel.freeze # Keep users from redefining Kernel methods.
