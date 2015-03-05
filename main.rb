@@ -16,14 +16,20 @@ end
 def process_command(input:)
   stdout_stream = capture(:stdout) { $p.eval(input) }
   stderr_stream = capture(:stderr) { $q.eval(input) }
-  handler(stdout_stream, stderr_stream)
+  handle(stdout_stream, stderr_stream)
 end
 
-def handler(stdout, stderr)
+def decolor(str)
+  if str =~ /\[1;36m/
+    str.gsub("[1;36m", "")
+  end
+end
+
+def handle(stdout, stderr)
   if !$p.eval_string.empty?
     "*"
   elsif stdout
-    stdout
+    decolor(stdout)
   else
     stderr
   end
