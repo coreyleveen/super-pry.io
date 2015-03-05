@@ -18,4 +18,4 @@ end
 #   end
 # end
 
-Kernel.freeze # Keep users from redefining Kernel methods.
+# Kernel.freeze # Keep users from redefining Kernel methods.

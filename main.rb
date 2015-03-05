@@ -14,27 +14,17 @@ post '/' do
 end
 
 def process_command(input:)
-  # old_output_size = $p.output_array.size
   stdout_stream = capture(:stdout) { $p.eval(input) }
   stderr_stream = capture(:stderr) { $q.eval(input) }
-  # new_output_size = $p.output_array.size
-  handler(
-    # old_size: old_output_size,
-    # new_size: new_output_size,
-    stdout: stdout_stream,
-    stderr: stderr_stream
-  )
+  handler(stdout_stream, stderr_stream)
 end
 
-def handler(options)
-  binding.pry
+def handler(stdout, stderr)
   if !$p.eval_string.empty?
     "*"
-  # elsif options[:new_size] != options[:old_size]
-    # $p.output_array[-1].inspect
-  elsif options[:stdout_stream]
-    options[:stdout_stream]
+  elsif stdout
+    stdout
   else
-    options[:stderr_stream]
+    stderr
   end
 end
