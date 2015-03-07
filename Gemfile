@@ -4,6 +4,12 @@ ruby "2.1.4"
 gem 'sinatra'
 gem 'sinatra-reloader'
 gem 'puma'
-gem 'pry'
 gem 'haml'
 gem 'activesupport'
+
+group :test do
+  gem 'minitest'
+  gem 'pry'
+end
+
+

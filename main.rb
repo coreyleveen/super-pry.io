@@ -30,7 +30,8 @@ def handle(stdout, stderr)
 end
 
 def decolor(str)
-  str.gsub!("=> \e[1;36m", "") if str =~ /=> \e\[1;36m/
-  str.gsub!("\e[0m","") if str =~ /\e\[0m/
-  str.gsub!("=> \e[33m", "") if str =~ /=> \e\[33m/
+  str.gsub!(/=> \e\[1;36m/, "")
+  str.gsub!(/\e\[0m/, "")
+  str.gsub!(/=> \e\[33m/, "")
+  return str
 end
