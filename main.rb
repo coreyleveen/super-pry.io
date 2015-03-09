@@ -37,5 +37,6 @@ def decolor(str)
   str.gsub!(/\[1;34m/, "")
   str.gsub!(/\[;31m/, "")
   str.gsub!(/\[31m/, "")
+  str.gsub!(/\[1;34;4m/, "")
   return str
 end
