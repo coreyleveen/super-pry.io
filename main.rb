@@ -30,14 +30,20 @@ def handle(stdout, stderr)
 end
 
 def decolor(str)
-  str.gsub!(/=> \e\[1;36m/, "")
-  str.gsub!(/\e\[0m/, "")
-  str.gsub!(/=> \e\[33m/, "")
-  str.gsub!(/\[32m/, "")
-  str.gsub!(/\[1;34m/, "")
-  str.gsub!(/\[;31m/, "")
-  str.gsub!(/\[1;31m/, "")
-  str.gsub!(/\[31m/, "")
-  str.gsub!(/\[1;34;4m/, "")
+  color_regexes.each { |rgx| str.gsub!(rgx, "") }
   return str
+end
+
+def color_regexes
+  [
+    /=> \e\[1;36m/,
+    /\e\[0m/,
+    /=> \e\[33m/,
+    /\[32m/,
+    /\[1;34m/,
+    /\[;31m/,
+    /\[1;31m/,
+    /\[31m/,
+    /\[1;34;4m/
+  ]
 end
