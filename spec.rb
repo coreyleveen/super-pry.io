@@ -25,6 +25,9 @@ describe 'decolor' do
   it 'removes light red' do
     str = "[;31m"
     decolor(str).must_equal ""
+
+    str = "[1;31m"
+    decolor(str).must_equal ""
   end
 
   it 'removes red' do
