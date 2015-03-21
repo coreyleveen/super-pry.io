@@ -7,6 +7,7 @@ gem 'puma'
 gem 'pry'
 gem 'haml'
 gem 'activesupport'
+gem 'hoosegow'
 
 gem 'minitest', group: :test
 
