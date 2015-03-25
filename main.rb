@@ -16,10 +16,10 @@ end
 def process_command(input:)
   stdout_stream = capture(:stdout) { $p.eval(input) }
   stderr_stream = capture(:stderr) { $q.eval(input) }
-  handle(stdout_stream, stderr_stream)
+  handle_input(stdout_stream, stderr_stream)
 end
 
-def handle(stdout, stderr)
+def handle_input(stdout, stderr)
   if !$p.eval_string.empty?
     "*"
   elsif stdout
