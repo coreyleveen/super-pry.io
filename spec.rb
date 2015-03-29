@@ -12,6 +12,11 @@ describe 'decolor' do
     decolor(str).must_equal ""
   end
 
+  it 'removes other yellow' do
+    str = "[1;35m"
+    decolor(str).must_equal ""
+  end
+
   it 'removes green' do
     str = "[32m"
     decolor(str).must_equal ""
