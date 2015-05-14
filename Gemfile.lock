@@ -24,7 +24,7 @@ GEM
     i18n (0.7.0)
     json (1.8.2)
     method_source (0.8.2)
-    minitest (5.5.1)
+    minitest (5.6.1)
     msgpack (0.5.11)
     multi_json (1.11.0)
     pry (0.10.1)
@@ -65,7 +65,7 @@ DEPENDENCIES
   activesupport
   haml
   hoosegow
-  minitest
+  minitest (~> 5.6)
   pry
   puma
   sinatra

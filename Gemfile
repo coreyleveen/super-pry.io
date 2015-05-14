@@ -9,6 +9,6 @@ gem 'haml'
 gem 'activesupport'
 gem 'hoosegow'
 
-gem 'minitest', group: :test
-
-
+group :test, :development do
+  gem 'minitest', '~> 5.6'
+end
