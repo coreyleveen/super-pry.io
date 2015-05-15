@@ -49,4 +49,9 @@ describe 'decolor' do
     str = "[1;34;4m"
     decolor(str).must_equal ""
   end
+
+  it 'removes bold' do
+    str = "[1m"
+    decolor(str).must_equal ""
+  end
 end
